@@ -1,13 +1,13 @@
-package com.bor96dev.criminalintent
+package com.bor96dev.criminalintent.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bor96dev.criminalintent.Crime
+import com.bor96dev.criminalintent.CrimeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-
-private const val TAG = "Money"
 
 class CrimeListViewModel : ViewModel() {
 
@@ -20,7 +20,7 @@ class CrimeListViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            crimeRepository.getCrimes().collect(){
+            crimeRepository.getCrimes().collect() {
                 _crimes.value = it
             }
 
