@@ -5,26 +5,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bor96dev.criminalintent.databinding.ListItemCrimeBinding
+import java.util.UUID
 
 
 class CrimeListAdapter(
     private val crimes: List<Crime>,
-    private val onCrimeClicked: () -> Unit,
+    private val onCrimeClicked: (crimeId: UUID) -> Unit,
 ) :
     RecyclerView.Adapter<CrimeListAdapter.CrimeHolder>() {
 
     class CrimeHolder(
         val binding: ListItemCrimeBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(crime: Crime, onCrimeClicked: () -> Unit) {
+        fun bind(crime: Crime, onCrimeClicked: (crimeId: UUID) -> Unit) {
             binding.crimeTitleRv.text = crime.title
             binding.crimeDateRv.text = crime.date.toString()
             binding.crimeSolvedImg.visibility = if (crime.isSolved) View.VISIBLE else View.INVISIBLE
 
             binding.root.setOnClickListener {
-//                Toast.makeText(binding.root.context, "${crime.title} clicked!", Toast.LENGTH_SHORT)
-//                    .show()
-                onCrimeClicked()
+                onCrimeClicked(crime.id)
             }
         }
 
