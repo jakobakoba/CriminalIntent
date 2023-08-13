@@ -1,6 +1,7 @@
 package com.bor96dev.criminalintent
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ class CrimeListAdapter(private val crimes: List<Crime>) :
         fun bind(crime: Crime) {
             binding.crimeTitleRv.text = crime.title
             binding.crimeDateRv.text = crime.date.toString()
+            binding.crimeSolvedImg.visibility = if (crime.isSolved) View.VISIBLE else View.INVISIBLE
 
             binding.root.setOnClickListener {
                 Toast.makeText(binding.root.context, "${crime.title} clicked!", Toast.LENGTH_SHORT)

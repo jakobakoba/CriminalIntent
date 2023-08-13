@@ -15,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/crime_solved_img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Crime Title" />
@@ -34,7 +34,7 @@
 
     <ImageView
         android:contentDescription="@string/contentdescription"
-        android:id="@+id/imageView"
+        android:id="@+id/crime_solved_img"
         android:layout_width="23dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
