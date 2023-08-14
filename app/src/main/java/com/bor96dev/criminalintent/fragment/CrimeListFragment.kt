@@ -1,4 +1,4 @@
-package com.bor96dev.criminalintent
+package com.bor96dev.criminalintent.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bor96dev.criminalintent.CrimeListAdapter
 import com.bor96dev.criminalintent.databinding.FragmentCrimeListBinding
 import com.bor96dev.criminalintent.viewmodel.CrimeListViewModel
 import kotlinx.coroutines.launch

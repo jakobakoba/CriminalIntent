@@ -1,4 +1,4 @@
-package com.bor96dev.criminalintent
+package com.bor96dev.criminalintent.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bor96dev.criminalintent.Crime
 import com.bor96dev.criminalintent.databinding.FragmentCrimeDetailBinding
 import com.bor96dev.criminalintent.viewmodel.CrimeDetailViewModel
 import com.bor96dev.criminalintent.viewmodel.CrimeDetailViewModelFactory
@@ -48,9 +50,7 @@ class CrimeDetailFragment : Fragment() {
                     oldCrime.copy(title = text.toString())
                 }
             }
-            crimeDateBtn.apply {
-                isEnabled = false
-            }
+
             crimeSolvedCheckbox.setOnCheckedChangeListener { _, isChecked ->
                 crimeDetailViewModel.updateCrime { oldCrime ->
                     oldCrime.copy(isSolved = isChecked)
@@ -72,6 +72,11 @@ class CrimeDetailFragment : Fragment() {
                 crimeTitleEt.setText(crime.title)
             }
             crimeDateBtn.text = crime.date.toString()
+            crimeDateBtn.setOnClickListener {
+                findNavController().navigate(
+                    CrimeDetailFragmentDirections.selectDate()
+                )
+            }
             crimeSolvedCheckbox.isChecked = crime.isSolved
         }
     }
